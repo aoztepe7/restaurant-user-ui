@@ -1,4 +1,4 @@
-import {Restaurant} from '../../restaurant/model/Restaurant';
+import {Restaurant} from './Restaurant';
 
 export class Review {
   constructor(public uuid: string,
