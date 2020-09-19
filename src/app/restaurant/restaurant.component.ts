@@ -15,6 +15,13 @@ export class RestaurantComponent implements OnInit {
     'name': '',
     'ownerName': '',
     'rate': 0,
+    'highestRatedReview': '',
+    'highestRate': '',
+    'lowestRatedReview': '',
+    'lowestRate': '',
+    'latestReview': '',
+    'latestRate': '',
+    'latestDate': ''
   };
 
   reviewForm: any = {
@@ -61,7 +68,8 @@ export class RestaurantComponent implements OnInit {
 
   doSearchRestaurant() {
     const searchJson: any = {
-      page: this.restaurantPage
+      page: this.restaurantPage,
+      isOwner: false,
     };
     searchJson[this.searchRestaurant.searchBy] = this.searchRestaurant.query;
 
@@ -107,7 +115,14 @@ export class RestaurantComponent implements OnInit {
         this.restaurantDetail = {
           name: res.restaurant.name,
           owner: res.restaurant.owner.firstName + '  ' + res.restaurant.owner.lastName,
-          rate: res.restaurant.rate
+          rate: res.restaurant.rate,
+          highestRatedReview: res.restaurant.highestRatedReview,
+          highestRate: res.restaurant.highestRate,
+          lowestRatedReview: res.restaurant.lowestRatedReview,
+          lowestRate: res.restaurant.lowestRate,
+          latestReview: res.restaurant.latestReview,
+          latestRate: res.restaurant.latestRate,
+          latestDate: res.restaurant.latestDate,
         };
         this.getModal(template);
       } else {

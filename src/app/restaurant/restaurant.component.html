@@ -105,6 +105,23 @@
             <label>Rate</label>
             <input type="number" disabled name="rate" [(ngModel)]="restaurantDetail.rate" class="form-control" >
           </div>
+          <div class="form-group">
+            <label>Highest Rated Review </label>
+            <input type="text" disabled name="highestRatedReview" [(ngModel)]="restaurantDetail.highestRatedReview" class="form-control" >
+            <input type="number" disabled name="highestRate" [(ngModel)]="restaurantDetail.highestRate" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label>Lowest Rated Review </label>
+            <input type="text" disabled name="lowestRatedReview" [(ngModel)]="restaurantDetail.lowestRatedReview" class="form-control" >
+            <input type="number" disabled name="lowestRate" [(ngModel)]="restaurantDetail.lowestRate" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label>Last Review </label>
+            <input type="text" disabled name="latestReview" [(ngModel)]="restaurantDetail.latestReview" class="form-control" >
+            <input type="number" disabled name="latestRate" [(ngModel)]="restaurantDetail.latestRate" class="form-control" >
+            <input type="text" disabled name="latestDate" class="form-control" autocomplete="off"
+                   [(ngModel)]="restaurantDetail.latestDate">
+          </div>
 
         </div>
       </div>
