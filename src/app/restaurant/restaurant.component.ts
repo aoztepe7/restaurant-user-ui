@@ -232,14 +232,4 @@ export class RestaurantComponent implements OnInit {
     this.getReviews(0);
     this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
   }
-
-
-
-
-
-
-
-
-
-
 }
