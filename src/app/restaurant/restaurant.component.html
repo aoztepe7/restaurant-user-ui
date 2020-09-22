@@ -176,8 +176,6 @@
             <button type="button" (click)="editReview(reviewDetailModal,review.id)" class="btn btn-warning m-b-10 m-l-5">
               Edit / Detail
             </button>
-            <button type="button" (click)="deleteReview(review.id)" class="btn btn-danger m-b-10 m-l-5">Delete
-            </button>
           </td>
         </tr>
 
@@ -243,6 +241,15 @@
 
         </div>
       </div>
+
+      <div class="modal-body">
+        <div class="basic-form">
+          <div class="form-group">
+            <label>Restaurant Answer</label>
+            <input type="text" disabled name="ownerAnswer" [(ngModel)]="answerForm.ownerAnswer" class="form-control" >
+          </div>
+        </div>
+      </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Save</button>
         <button type="button" (click)="modalRef.hide()" class="btn btn-secondary" data-dismiss="modal">
@@ -252,4 +259,6 @@
     </form>
   </div>
 </ng-template>
+
+
 

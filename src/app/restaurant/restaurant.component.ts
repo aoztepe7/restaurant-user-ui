@@ -3,6 +3,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {ApiService} from '../api.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ReviewList} from './model/Review';
+import {Answer} from './model/Answer';
 
 @Component({
   selector: 'app-restaurant',
@@ -10,6 +11,10 @@ import {ReviewList} from './model/Review';
   styleUrls: ['./restaurant.component.css']
 })
 export class RestaurantComponent implements OnInit {
+
+  answerForm: any = {
+    'ownerAnswer': ''
+  };
 
   restaurantDetail: any = {
     'name': '',
@@ -57,6 +62,7 @@ export class RestaurantComponent implements OnInit {
   public apiRequest = {};
   public restaurantName;
   public selectedRestaurantId;
+  public selectedReviewId;
 
   modalRef: BsModalRef;
   constructor(private api: ApiService,
@@ -195,22 +201,10 @@ export class RestaurantComponent implements OnInit {
     return (!str || 0 === str.length);
   }
 
-  deleteReview(id) {
-    this.api.post('review/delete', this.apiRequest = {id: id}).then((res: any) => {
-      if (res.code === 100) {
-        this.getReviews(0);
-        this.doSearchRestaurant();
-      } else {
-        console.log(res.message);
-      }
-    }).catch((error: HttpErrorResponse) => {
-      console.log(error.error);
-    });
-  }
-
   editReview(template: TemplateRef<any>, id) {
     this.api.post('review/detail', this.apiRequest = {id: id}).then((res: any) => {
       if (res.code === 100) {
+        this.getRestaurantAnswer(id);
         this.reviewForm = {
           id : res.review.id,
           restaurantId : res.review.restaurant.id,
@@ -225,6 +219,11 @@ export class RestaurantComponent implements OnInit {
     }).catch((error: HttpErrorResponse) => {
       console.log(error.error);
     });
+  }
+
+  getRestaurantAnswer(id) {
+    this.api.post('answer/detail', this.apiRequest = {reviewId : id})
+      .then((item: any) => this.answerForm.ownerAnswer = item.answer.ownerAnswer);
   }
 
   openReviewPage(template: TemplateRef<any>, id , name) {
